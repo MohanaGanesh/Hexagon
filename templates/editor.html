@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+
+        <div class="toppane">
+            UNDO REDO
+            <button onclick="sendSelectedObjectBack();">Send back</button>
+            <button onclick="sendSelectedObjectToFront();">Bring Front</button>
+            <button id="crop">Crop</button>
+	        <button id="startCrop" style="border: 1px solid #000000">Mark Crop Area</button>
+            <input type="file" id="file">
+            <button id="save">Save</button>
+        </div>
+        <div class="leftpane">
+            <h1>Test Page</h1></div>
+        <div class="middlepane">
+            <canvas id="canvas" width="1750" height="750" style="border:2px solid #000000"></canvas>
+        </div>
+        <div class="rightpane">
+            <h1>Test Page</h1>
+        </div>
+    </div>
+    
+        
+    
+
+    
+
+    <!-- <a href='' id='txt'>Click Me!!</a> -->
+
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+{% endblock %}

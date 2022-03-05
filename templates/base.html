@@ -4,15 +4,38 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HEXAGON</title>
+        <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/fabric@5.2.1/dist/fabric.min.js"></script>
+        <script src="{{url_for('static', filename='js/crop.js')}}"></script>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+        <style>
+			#crop {
+				display: none;
+			}
+		</style>
+        <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='navbar.css') }}"> -->
     </head>
     <body>
 
-        <h1>HEXAGON</h1>
+        <!-- <button onclick="sendSelectedObjectBack();">Send back</button>
+        <button onclick="sendSelectedObjectToFront();">Bring Front</button>
+        <button id="crop">Crop</button>
+		<button id="startCrop" style="border: 1px solid #000000">Mark Crop Area</button>
+        
+        <canvas id="canvas" width="1750" height="750" style="border:2px solid #000000"></canvas>
 
-        <canvas id="canvas"></canvas>
+        <input type="file" id="file">
 
-        <script src="{{url_for('static', filename='js/fabric.min.js')}}"></script>
-        <script src="{{url_for('static', filename='js/index.js')}}"></script>
+        <a href='' id='txt'>Click Me!!</a>
+
+        <script src="{{url_for('static', filename='js/index.js')}}"></script> -->
+        {% block content %}
+        {% endblock %}
+        <!-- <script src="{{url_for('static', filename='js/crop.js')}}"></script> -->
+
+        
+        <!-- <script src="{{url_for('static', filename='js/index.js')}}"></script> -->
 
     </body>
 </html>
