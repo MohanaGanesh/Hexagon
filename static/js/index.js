@@ -5,9 +5,11 @@ var canvas = new fabric.Canvas('canvas');
 
 let currentImage;
 
-addImage(canvas)
+addImage(canvas);
+addImage(canvas);
 createMaskForCrop(canvas);
 crop(canvas);
+hideItems();
 
 canvas.preserveObjectStacking = true;
 
@@ -22,11 +24,15 @@ document.getElementById('file').addEventListener("change", function (e) {
         fabric.Image.fromURL(data, function (img) {
             var oImg = img.set({left: 50, top: 100, angle: 00}).scale(0.9);
             currentImage = oImg;
+            oImg.filters.push(filters.brightness);
+            oImg.filters.push(filters.saturation);
+            oImg.filters.push(filters.contrast);
+            oImg.filters.push(filters.hue);
             canvas.add(oImg).renderAll();
-            var a = canvas.setActiveObject(oImg);
-            var dataURL = canvas.toDataURL({ format: 'jpeg', quality: 0.8 });
-        console.log("Canvas Image " + dataURL);
-        document.getElementById('txt').href=dataURL;
+        //     var a = canvas.setActiveObject(oImg);
+        //     var dataURL = canvas.toDataURL({ format: 'jpeg', quality: 0.8 });
+        // console.log("Canvas Image " + dataURL);
+        // document.getElementById('txt').href=dataURL;
         });
     };
     reader.readAsDataURL(file);
@@ -177,24 +183,68 @@ function crop(canvas) {
 
 //Function to save
 
-function download(url, name) {
-    $("<a>")
-      .attr({
-        href: url,
-        download: name
-      })[0]
-      .click();
+var imageSaver = document.getElementById('lnkDownload');
+imageSaver.addEventListener('click', saveImage, false);
+
+function saveImage(e) {
+    this.href = canvas.toDataURL({
+        format: 'png',
+        quality: 0.8
+    });
+    this.download = 'canvas.png'
 }
 
-function save() {
-    canvas.deactivateAll().renderAll();
-    var c = document.getElementById('c');
-    var dataURL = c.toDataURL();
-    var name = 'image';
-    download(dataURL, name + ".png");
+//Setting visibility of the options
+
+//function to set visibility of the options
+function hideItems() {
+    document.getElementById('effects').style.display = "none";
+    document.getElementById('color').style.display = "none";
+    document.getElementById('light').style.display = "none";
+    document.getElementById('shapes').style.display = "none";
+    document.getElementById('draw').style.display = "none";
+    document.getElementById('canvas1').style.display = "none";
+    document.getElementById('background').style.display = "none";
+    document.getElementById('filters').style.display = "none";
 }
-$("#save").click(save);
 
+function effectsFunction() {
+    hideItems();
+    document.getElementById('effects').style.display = "block";
+}
 
+function colorFunction() {
+    hideItems();
+    document.getElementById('color').style.display = "block";
+}
 
+function lightFunction() {
+    hideItems();
+    document.getElementById('light').style.display = "block";
+}
+
+function shapesFunction() {
+    hideItems();
+    document.getElementById('shapes').style.display = "block";
+}
+
+function drawFunction() {
+    hideItems();
+    document.getElementById('draw').style.display = "block";
+}
+
+function canvasFunction() {
+    hideItems();
+    document.getElementById('canvas1').style.display = "block";
+}
+
+function backgroundFunction() {
+    hideItems();
+    document.getElementById('background').style.display = "block";
+}
+
+function filtersFunction() {
+    hideItems();
+    document.getElementById('filters').style.display = "block";
+}
 
