@@ -2,7 +2,8 @@ const filters = {
     brightness: new fabric.Image.filters.Brightness(),
     saturation: new fabric.Image.filters.Saturation(),
     contrast: new fabric.Image.filters.Contrast(),
-    hue: new fabric.Image.filters.HueRotation()
+    hue: new fabric.Image.filters.HueRotation(),
+    blur: new fabric.Image.filters.Blur(),
   }
   
   // - Brightness
@@ -61,6 +62,21 @@ var image = canvas.getActiveObject();
     const value = parseFloat(hueInput.value);
     // Edit the filter value
     filters.hue.rotation = value;
+    // Apply the changes
+    image.applyFilters();
+    // Display the result 
+    canvas.renderAll();
+  }
+
+  // - Blur
+  // Attach the filter to the image
+  image.filters.push(filters.blur);
+  const blurInput = document.querySelector("#blur");
+  blurInput.oninput = () => {
+    image = canvas.getActiveObject();
+    const value = parseFloat(blurInput.value);
+    // Edit the filter value
+    filters.blur.blur = value;
     // Apply the changes
     image.applyFilters();
     // Display the result 
