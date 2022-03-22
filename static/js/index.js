@@ -46,6 +46,11 @@ function addImage(canvas) {
     dogImg.src = "https://neilpatel.com/wp-content/uploads/2017/08/url.jpg";
     dogImg.onload = function () {
         var img = new fabric.Image(dogImg);
+        img.filters.push(new fabric.Image.filters.Brightness());
+        // img.filters.push(filters.saturation);
+        // img.filters.push(filters.contrast);
+        // img.filters.push(filters.hue);
+        // img.filters.push(filters.blur);
         canvas.add(img);
         canvas.centerObject(img);
         canvas.setActiveObject(img);
@@ -65,22 +70,22 @@ function addImage(canvas) {
 //     canvas.setBackgroundImage(oImg).renderAll();
 // });
 
-canvas.add(new fabric.Circle({
-    left: 50,
-    top: 50,
-    radius: 50,
-    stroke: 'red',
-    fill: 'yellow'
-}))
+// canvas.add(new fabric.Circle({
+//     left: 50,
+//     top: 50,
+//     radius: 50,
+//     stroke: 'red',
+//     fill: 'yellow'
+// }))
 
-canvas.add(new fabric.Rect({
-    left: 50,
-    top: 50,
-    height: 150,
-    width:150,
-    stroke: 'red',
-    fill: 'green'
-}))
+// canvas.add(new fabric.Rect({
+//     left: 50,
+//     top: 50,
+//     height: 150,
+//     width:150,
+//     stroke: 'red',
+//     fill: 'green'
+// }))
 
 var sendSelectedObjectBack = function() {
     selectedObject = canvas.getActiveObject();
@@ -272,6 +277,8 @@ var state;
             $('#undo').prop('disabled', false);
           }
           state = JSON.stringify(canvas);
+          console.clear();
+          console.log(state);
         }
 
         /**
@@ -310,17 +317,17 @@ var state;
             save();
           });
           // draw button
-          $('#draw').click(function() {
-            var imgObj = new fabric.Circle({
-              fill: '#' + Math.floor(Math.random() * 16777215).toString(16),
-              radius: Math.random() * 250,
-              left: Math.random() * 250,
-              top: Math.random() * 250
-            });
-            canvas.add(imgObj);
-            canvas.renderAll();
-            save();
-          });
+        //   $('#draw').click(function() {
+        //     var imgObj = new fabric.Circle({
+        //       fill: '#' + Math.floor(Math.random() * 16777215).toString(16),
+        //       radius: Math.random() * 250,
+        //       left: Math.random() * 250,
+        //       top: Math.random() * 250
+        //     });
+        //     canvas.add(imgObj);
+        //     canvas.renderAll();
+        //     save();
+        //   });
           // undo and redo buttons
           $('#undo').click(function() {
             replay(undo, redo, '#redo', this);

@@ -8,13 +8,14 @@
     <div class="container">
 
         <div class="toppane">
-            UNDO REDO
             <button onclick="sendSelectedObjectBack();">Send back</button>
             <button onclick="sendSelectedObjectToFront();">Bring Front</button>
             <button id="crop">Crop</button>
 	        <button id="startCrop" style="border: 1px solid #000000">Mark Crop Area</button>
             <input type="file" id="file">
             <a id="lnkDownload" href="#">Save image</a>
+            <button id="undo">Undo</button>
+            <button id="redo">Redo</button>
         </div>
         <div class="leftpane">
             <div class="btn-group">
@@ -44,8 +45,7 @@
                 Contrast:<input type="range" id="contrast" value="0" min="-1" max="1" step="0.01"><br>
             </div>
             <div id="shapes">
-                <button id="undo">Undo</button>
-                <button id="redo">Redo</button>
+                SHAPES
             </div>
             <div id="draw">
                 DRAW
