@@ -34,7 +34,7 @@ var image;
     image = canvas.getActiveObject();
     const value = parseFloat(saturationInput.value);
     // Edit the filter value
-    filters.saturation.saturation = value;
+    image.filters[1].saturation = value;
     // Apply the changes
     image.applyFilters();
     // Display the result 
@@ -49,7 +49,7 @@ var image;
     image = canvas.getActiveObject();
     const value = parseFloat(contrastInput.value);
     // Edit the filter value
-    filters.contrast.contrast = value;
+    image.filters[2].contrast = value;
     // Apply the changes
     image.applyFilters();
     // Display the result 
@@ -64,7 +64,7 @@ var image;
     image = canvas.getActiveObject();
     const value = parseFloat(hueInput.value);
     // Edit the filter value
-    filters.hue.rotation = value;
+    image.filters[3].rotation = value;
     // Apply the changes
     image.applyFilters();
     // Display the result 
@@ -79,7 +79,7 @@ var image;
     image = canvas.getActiveObject();
     const value = parseFloat(blurInput.value);
     // Edit the filter value
-    filters.blur.blur = value;
+    image.filters[4].blur = value;
     // Apply the changes
     image.applyFilters();
     // Display the result 

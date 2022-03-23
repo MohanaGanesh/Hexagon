@@ -47,10 +47,10 @@ function addImage(canvas) {
     dogImg.onload = function () {
         var img = new fabric.Image(dogImg);
         img.filters.push(new fabric.Image.filters.Brightness());
-        // img.filters.push(filters.saturation);
-        // img.filters.push(filters.contrast);
-        // img.filters.push(filters.hue);
-        // img.filters.push(filters.blur);
+        img.filters.push(new fabric.Image.filters.Saturation());
+        img.filters.push(new fabric.Image.filters.Contrast());
+        img.filters.push(new fabric.Image.filters.HueRotation());
+        img.filters.push(new fabric.Image.filters.Blur());
         canvas.add(img);
         canvas.centerObject(img);
         canvas.setActiveObject(img);
