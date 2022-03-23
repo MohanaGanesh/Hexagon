@@ -1,11 +1,28 @@
 from flask import Flask, render_template
-  
+import os
+
 app = Flask(__name__)
-  
+
+picFolder = os.path.join('static', 'images')
+
+app.config['UPLOAD_FOLDER'] = picFolder
+
 @app.route('/')
 
 def homepage():
-    return render_template("editor.html")
+    effects = os.path.join(app.config['UPLOAD_FOLDER'], 'magic-wand.png')
+    color = os.path.join(app.config['UPLOAD_FOLDER'], 'palette.png')
+    light = os.path.join(app.config['UPLOAD_FOLDER'], 'idea.png')
+    shapes = os.path.join(app.config['UPLOAD_FOLDER'], 'play.png')
+    text = os.path.join(app.config['UPLOAD_FOLDER'], 'text.png')
+    canvas = os.path.join(app.config['UPLOAD_FOLDER'], 'canvas1.png')
+    save = os.path.join(app.config['UPLOAD_FOLDER'], 'download.png')
+    undo = os.path.join(app.config['UPLOAD_FOLDER'], 'undo.png')
+    redo = os.path.join(app.config['UPLOAD_FOLDER'], 'redo.png')
+    back = os.path.join(app.config['UPLOAD_FOLDER'], 'backward.png')
+    front = os.path.join(app.config['UPLOAD_FOLDER'], 'forward.png')
+    crop = os.path.join(app.config['UPLOAD_FOLDER'], 'crop.png')
+    return render_template("editor.html", effects1=effects, color1=color, light1=light, shapes1=shapes, text1=text, canvas1=canvas, save1=save, undo1=undo, redo1=redo, back1=back, front1=front, crop1=crop)
 
 # @app.route('/favicon.ico')
 # def favicon():

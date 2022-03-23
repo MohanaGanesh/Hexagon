@@ -1,9 +1,19 @@
-console.log(testing);
-console.log("hello");
-
 var canvas = new fabric.Canvas('canvas');
 
 let currentImage;
+
+var bgImg = new Image();
+bgImg.crossOrigin = "anonymous";
+bgImg.src = "https://www.poynter.org/wp-content/uploads/2019/01/background.png";
+bgImg.onload = function () {
+    var bg = new fabric.Image(bgImg);
+    canvas.setBackgroundImage(bg, canvas.renderAll.bind(canvas), {
+        // Optionally add an opacity lvl to the image
+        backgroundImageOpacity: 0.5,
+        // should the image be resized to fit the container?
+        backgroundImageStretch: false
+    });
+};
 
 addImage(canvas);
 addImage(canvas);
@@ -24,11 +34,12 @@ document.getElementById('file').addEventListener("change", function (e) {
         fabric.Image.fromURL(data, function (img) {
             var oImg = img.set({left: 50, top: 100, angle: 00}).scale(0.9);
             currentImage = oImg;
-            oImg.filters.push(filters.brightness);
-            oImg.filters.push(filters.saturation);
-            oImg.filters.push(filters.contrast);
-            oImg.filters.push(filters.hue);
-            oImg.filters.push(filters.blur);
+            oImg.filters.push(new fabric.Image.filters.Brightness());
+            oImg.filters.push(new fabric.Image.filters.Saturation());
+            oImg.filters.push(new fabric.Image.filters.Contrast());
+            oImg.filters.push(new fabric.Image.filters.HueRotation());
+            oImg.filters.push(new fabric.Image.filters.Blur());
+            oImg.filters.push(new fabric.Image.filters.Gamma());
             canvas.add(oImg).renderAll();
         //     var a = canvas.setActiveObject(oImg);
         //     var dataURL = canvas.toDataURL({ format: 'jpeg', quality: 0.8 });
@@ -51,6 +62,10 @@ function addImage(canvas) {
         img.filters.push(new fabric.Image.filters.Contrast());
         img.filters.push(new fabric.Image.filters.HueRotation());
         img.filters.push(new fabric.Image.filters.Blur());
+        img.filters.push(new fabric.Image.filters.Gamma());
+        // img.filters.push(new fabric.Image.filters.RemoveColor());
+        // img.filters.push(new fabric.Image.filters.Grayscale());
+        // img.filters.push(new fabric.Image.filters.Invert());
         canvas.add(img);
         canvas.centerObject(img);
         canvas.setActiveObject(img);
@@ -69,23 +84,6 @@ function addImage(canvas) {
 //     });
 //     canvas.setBackgroundImage(oImg).renderAll();
 // });
-
-// canvas.add(new fabric.Circle({
-//     left: 50,
-//     top: 50,
-//     radius: 50,
-//     stroke: 'red',
-//     fill: 'yellow'
-// }))
-
-// canvas.add(new fabric.Rect({
-//     left: 50,
-//     top: 50,
-//     height: 150,
-//     width:150,
-//     stroke: 'red',
-//     fill: 'green'
-// }))
 
 var sendSelectedObjectBack = function() {
     selectedObject = canvas.getActiveObject();
@@ -195,11 +193,15 @@ var imageSaver = document.getElementById('lnkDownload');
 imageSaver.addEventListener('click', saveImage, false);
 
 function saveImage(e) {
+    bgImage = canvas.backgroundImage;
+    canvas.backgroundImage = null;
+    canvas.renderAll();
     this.href = canvas.toDataURL({
         format: 'png',
         quality: 0.8
     });
-    this.download = 'canvas.png'
+    this.download = 'canvas.png';
+    canvas.setBackgroundImage(bgImage, canvas.renderAll.bind(canvas));
 }
 
 //Setting visibility of the options
@@ -210,7 +212,7 @@ function hideItems() {
     document.getElementById('color').style.display = "none";
     document.getElementById('light').style.display = "none";
     document.getElementById('shapes').style.display = "none";
-    document.getElementById('draw').style.display = "none";
+    document.getElementById('text').style.display = "none";
     document.getElementById('canvas1').style.display = "none";
     document.getElementById('background').style.display = "none";
     document.getElementById('filters').style.display = "none";
@@ -236,9 +238,9 @@ function shapesFunction() {
     document.getElementById('shapes').style.display = "block";
 }
 
-function drawFunction() {
+function textFunction() {
     hideItems();
-    document.getElementById('draw').style.display = "block";
+    document.getElementById('text').style.display = "block";
 }
 
 function canvasFunction() {

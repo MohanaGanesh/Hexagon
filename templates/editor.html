@@ -8,56 +8,80 @@
     <div class="container">
 
         <div class="toppane">
-            <button onclick="sendSelectedObjectBack();">Send back</button>
-            <button onclick="sendSelectedObjectToFront();">Bring Front</button>
-            <button id="crop">Crop</button>
-	        <button id="startCrop" style="border: 1px solid #000000">Mark Crop Area</button>
-            <input type="file" id="file">
-            <a id="lnkDownload" href="#">Save image</a>
-            <button id="undo">Undo</button>
-            <button id="redo">Redo</button>
+            <div class="btn-group1">
+                <button><h1>HEXAGON</h1></button>
+                <button onclick="sendSelectedObjectBack();"><img src="{{ back1 }}" height = "30px" width = "30px"><br>SEND BACK</button>
+                <button onclick="sendSelectedObjectToFront();"><img src="{{ front1 }}" height = "30px" width = "30px"><br>BRING FRONT</button>
+                <button id="crop"><img src="{{ crop1 }}" height = "30px" width = "30px"><br>CROP</button>
+	            <button id="startCrop"><img src="{{ crop1 }}" height = "30px" width = "30px"><br>MARK CROP AREA</button>
+                <button><input type="file" id="file"></button>
+                <a id="lnkDownload" href="#"><button><img src="{{ save1 }}" height = "30px" width = "30px"><br>SAVE</button></a>
+                <button id="undo"><img src="{{ undo1 }}" height = "30px" width = "30px"><br>UNDO</button>
+                <button id="redo"><img src="{{ redo1 }}" height = "30px" width = "30px"><br>REDO</button>
+              </div>
         </div>
         <div class="leftpane">
             <div class="btn-group">
-                <button onclick="effectsFunction()">Effects</button>
-                <button onclick="colorFunction()">Color</button>
-                <button onclick="lightFunction()">Light</button>
-                <button onclick="shapesFunction()">Shapes</button>
-                <button onclick="drawFunction()">Draw</button>
-                <button onclick="canvasFunction()">Canvas</button>
-                <button onclick="backgroundFunction()">Background</button>
-                <button onclick="filtersFunction()">Filters</button>
+                <button onclick="effectsFunction()"><img src="{{ effects1 }}" height = "30px" width = "30px"><br>EFFECTS</button>
+                <button onclick="colorFunction()"><img src="{{ color1 }}" height = "30px" width = "30px"><br>COLOR</button>
+                <button onclick="lightFunction()"><img src="{{ light1 }}" height = "30px" width = "30px"><br>LIGHT</button>
+                <button onclick="shapesFunction()"><img src="{{ shapes1 }}" height = "30px" width = "30px"><br>SHAPES</button>
+                <button onclick="textFunction()"><img src="{{ text1 }}" height = "30px" width = "30px"><br>TEXT</button>
+                <button onclick="canvasFunction()"><img src="{{ canvas1 }}" height = "30px" width = "30px"><br>CANVAS</button>
+                <!-- <button onclick="backgroundFunction()">Background</button>
+                <button onclick="filtersFunction()">Filters</button> -->
               </div>
         </div>
         <div class="middlepane">
-            <canvas id="canvas" width="1750" height="750" style="border:2px solid #000000"></canvas>
+            <canvas id="canvas" width="700" height="700" style="border:2px solid #000000"></canvas>
         </div>
         <div class="rightpane">
             <div id="effects">
-                Blur:<input type="range" id="blur" value="0" min="0" max="1" step="0.01"><br>
+                <div class="blur"><b>BLUR</b><br><input type="range" id="blur" value="0" min="0" max="1" step="0.01"><br></div>
             </div>
             <div id="color">
-                Saturation:<input type="range" id="saturation" value="0" min="-1" max="1" step="0.01"><br>
-                Hue:<input type="range" id="hue" value="0" min="-1" max="1" step="0.01"><br>
+                <div class="saturation"><b>SATURATION</b><br><input type="range" id="saturation" value="0" min="-1" max="1" step="0.01"><br></div>
+                <div class="hue"><b>HUE</b><br><input type="range" id="hue" value="0" min="-1" max="1" step="0.01"><br></div>
+                <div class="gamma"><b>GAMMA CORRECTION</b><br><br>
+                <b>RED</b><br><input type="range" id="gammaRed" value="1" min="0" max="2" step="0.01"><br>
+                <b>GREEN</b><br><input type="range" id="gammaGreen" value="1" min="0" max="2" step="0.01"><br>
+                <b>BLUE</b><br><input type="range" id="gammaBlue" value="1" min="0" max="2" step="0.01"><br></div>
             </div>
             <div id="light">
-                Brightness:<input type="range" id="brightness" value="0" min="-1" max="1" step="0.01"><br>
-                Contrast:<input type="range" id="contrast" value="0" min="-1" max="1" step="0.01"><br>
+                <div class="brightness"><b>BRIGHTNESS</b><br><input type="range" id="brightness" value="0" min="-1" max="1" step="0.01"><br></div>
+                <div class="contrast"><b>CONTRAST</b><br><input type="range" id="contrast" value="0" min="-1" max="1" step="0.01"><br></div>
             </div>
             <div id="shapes">
-                SHAPES
+                <div class="addRect"><b>ADD RECTANGLE</b><br>
+                <b>COLOR </b><input type="color" id="rectangleColor"><br>
+                <button onclick="addRectangle()">Add</button><br></div>
+                <div class="addCircle"><b>ADD CIRCLE</b><br>
+                <b>COLOR </b><input type="color" id="circleColor"><br>
+                <button onclick="addCircle()">Add</button><br></div>
+                <div class="addCircle"><b>ADD TRIANGLE</b><br>
+                <b>COLOR </b><input type="color" id="triangleColor"><br>
+                <button onclick="addTriangle()">Add</button><br></div>
             </div>
-            <div id="draw">
-                DRAW
+            <div id="text">
+                <div class="addText"><b>ADD TEXT</b><br>
+                <b>COLOR </b><input type="color" id="textColor"><br>
+                <b>FONT SIZE</b><br><input type="range" id="textSize" value="40" min="8" max="150" step="1"><br>
+                <button onclick="addText()">ADD</button><br><br></div>
             </div>
             <div id="canvas1">
-                CANVAS
+                <div class="resizeCanvas">><b>RESIZE CANVAS</b><br>
+                <b>WIDTH</b><br><input type="range" id="canvasWidth" value="700" min="500" max="1500" step="10"><br>
+                <b>HEIGHT</b><br><input type="range" id="canvasHeight" value="700" min="500" max="1500" step="10"><br></div>
             </div>
             <div id="background">
-                BACKGROUND
+                REMOVE BACKGROUND<br>
+                Color:<input type="color" id="removeColor"><br>
+                Threshold:<input type="range" id="removeThreshold" value="0" min="0" max="1" step="0.05"><br>
+                <button onclick="removeBackground()">Remove</button><br><br>
             </div>
             <div id="filters">
-                FILTERS
+                Grayscale:<input type="range" id="grayscale" value="1" min="1" max="3" step="1"><br>
+                Invert:<input type="range" id="invert" value="0" min="0" max="1" step="1"><br>
             </div>
         </div>
     </div>
@@ -71,4 +95,5 @@
 
     <script src="{{url_for('static', filename='js/index.js')}}"></script>
     <script src="{{url_for('static', filename='js/filters.js')}}"></script>
+    <script src="{{url_for('static', filename='js/drawing.js')}}"></script>
 {% endblock %}
