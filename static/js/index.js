@@ -216,7 +216,7 @@ function hideItems() {
     document.getElementById('text').style.display = "none";
     document.getElementById('canvas1').style.display = "none";
     document.getElementById('background').style.display = "none";
-    document.getElementById('filters').style.display = "none";
+    //document.getElementById('filters').style.display = "none";
 }
 
 function effectsFunction() {
@@ -254,10 +254,10 @@ function backgroundFunction() {
     document.getElementById('background').style.display = "block";
 }
 
-function filtersFunction() {
-    hideItems();
-    document.getElementById('filters').style.display = "block";
-}
+// function filtersFunction() {
+//     hideItems();
+//     document.getElementById('filters').style.display = "block";
+// }
 
 // UNDO REDO CLEAR
 

@@ -28,6 +28,7 @@
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
+    height:100px;
   }
 
   .btn-group1 button:not(:last-child) {
