@@ -5,6 +5,7 @@ let currentImage;
 var bgImg = new Image();
 bgImg.crossOrigin = "anonymous";
 bgImg.src = "https://www.poynter.org/wp-content/uploads/2019/01/background.png";
+// bgImg.src = background1;
 bgImg.onload = function () {
     var bg = new fabric.Image(bgImg);
     canvas.setBackgroundImage(bg, canvas.renderAll.bind(canvas), {
@@ -15,8 +16,8 @@ bgImg.onload = function () {
     });
 };
 
-addImage(canvas);
-addImage(canvas);
+// addImage(canvas);
+// addImage(canvas);
 createMaskForCrop(canvas);
 crop(canvas);
 hideItems();

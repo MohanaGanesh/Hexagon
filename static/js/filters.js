@@ -128,6 +128,20 @@ var image;
     canvas.renderAll();
   }
 
+  // // - Pixelate
+  // // Attach the filter to the image
+  // const pixelateInput = document.querySelector("#pixelate");
+  // pixelateInput.oninput = () => {
+  //   image = canvas.getActiveObject();
+  //   const value = parseFloat(pixelateInput.value);
+  //   // Edit the filter value
+  //   image.filters[6].pixelate = value;
+  //   // Apply the changes
+  //   image.applyFilters();
+  //   // Display the result 
+  //   canvas.renderAll();
+  // }
+
   // // - Grayscale
   // // Attach the filter to the image
   // const grayscaleInput = document.querySelector("#grayscale");

@@ -22,7 +22,8 @@ def homepage():
     back = os.path.join(app.config['UPLOAD_FOLDER'], 'backward.png')
     front = os.path.join(app.config['UPLOAD_FOLDER'], 'forward.png')
     crop = os.path.join(app.config['UPLOAD_FOLDER'], 'crop.png')
-    return render_template("editor.html", effects1=effects, color1=color, light1=light, shapes1=shapes, text1=text, canvas1=canvas, save1=save, undo1=undo, redo1=redo, back1=back, front1=front, crop1=crop)
+    background = os.path.join(app.config['UPLOAD_FOLDER'], 'background.png')
+    return render_template("editor.html", effects1=effects, color1=color, light1=light, shapes1=shapes, text1=text, canvas1=canvas, save1=save, undo1=undo, redo1=redo, back1=back, front1=front, crop1=crop, background1=background)
 
 # @app.route('/favicon.ico')
 # def favicon():
