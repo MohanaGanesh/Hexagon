@@ -3,6 +3,20 @@ body, html {
     height: 100%;
     margin: 0;
   }
+
+/* h1 font */
+.title_main {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  font-size: 3em;
+}
+
+/* sup font */
+sup {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+}
   
   .container {
     width: 100%;

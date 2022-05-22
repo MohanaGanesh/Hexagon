@@ -339,3 +339,9 @@ var state;
             replay(redo, undo, '#undo', this);
           })
         });
+
+document.getElementById('FileUpload').addEventListener('click', openDialog);
+
+function openDialog() {
+    document.getElementById('file').click();
+}

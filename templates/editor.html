@@ -9,12 +9,12 @@
 
         <div class="toppane">
             <div class="btn-group1">
-                <button><h1>HEXAGON</h1></button>
+                <button><h1><div id="title_main">HEXAGON </div><sup>[WEB BUILD BETA]</sup></h1></button>
                 <button onclick="sendSelectedObjectBack();"><img src="{{ back1 }}" height = "30px" width = "30px"><br>SEND BACK</button>
                 <button onclick="sendSelectedObjectToFront();"><img src="{{ front1 }}" height = "30px" width = "30px"><br>BRING FRONT</button>
                 <button id="crop"><img src="{{ crop1 }}" height = "30px" width = "30px"><br>CROP</button>
 	            <button id="startCrop"><img src="{{ crop1 }}" height = "30px" width = "30px"><br>MARK CROP AREA</button>
-                <button><input type="file" id="file"></button>
+                <button id="FileUpload"><img src="{{ upload1 }}" height = "30px" width = "30px"><br>UPLOAD IMAGE<input type="file" id="file" hidden/></button>
                 <a id="lnkDownload" href="#"><button><img src="{{ save1 }}" height = "30px" width = "30px"><br>SAVE</button></a>
                 <button id="undo"><img src="{{ undo1 }}" height = "30px" width = "30px"><br>UNDO</button>
                 <button id="redo"><img src="{{ redo1 }}" height = "30px" width = "30px"><br>REDO</button>
